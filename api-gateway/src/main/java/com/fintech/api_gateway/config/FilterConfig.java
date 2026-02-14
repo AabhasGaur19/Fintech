@@ -12,7 +12,8 @@ public class FilterConfig {
     public FilterRegistrationBean<JwtAuthenticationFilter> jwtFilter(JwtAuthenticationFilter filter) {
         FilterRegistrationBean<JwtAuthenticationFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(filter);
-        registrationBean.addUrlPatterns("/*"); // Apply to all routes
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.setOrder(1); // Set order
         return registrationBean;
     }
 }
