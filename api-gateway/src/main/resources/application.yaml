@@ -8,7 +8,6 @@ spring:
   cloud:
     gateway:
       mvc:
-        # Global CORS configuration
         globalcors:
           cors-configurations:
             '[/**]':
@@ -24,21 +23,6 @@ spring:
               allow-credentials: false
               max-age: 3600
 
-# Logging configuration
-logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
-    org.springframework.web: DEBUG
-    com.fintech.apigateway: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-
-# Management endpoints (optional - for monitoring)
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,gateway
-  endpoint:
-    health:
-      show-details: always
+# JWT Configuration
+jwt:
+  secret: your-secret-key-must-be-at-least-256-bits-long-for-hs256-algorithm

@@ -25,15 +25,12 @@ public class GatewayConfig {
                 .build();
     }
 
-    // Add more service routes as needed
-    // Example for another service:
-    /*
     @Bean
     public RouterFunction<ServerResponse> userServiceRoute() {
         return route("user-service")
-                .route(RequestPredicates.path("/users/**"), HandlerFunctions.http("http://localhost:8083"))
+                .route(RequestPredicates.path("/user/**"), HandlerFunctions.http("http://localhost:8083"))
                 .filter(addRequestHeader("X-Gateway-Request", "API-Gateway"))
+                .filter(addResponseHeader("X-Gateway-Response", "API-Gateway"))
                 .build();
     }
-    */
 }
