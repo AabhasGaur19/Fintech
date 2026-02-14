@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
-import { useAuth } from '../context/useAuth';
+import { useSelector } from 'react-redux';
 import Navbar from '../components/common/Navbar';
 
 const DashboardPage = () => {
-  const { user } = useAuth();
+  const { user } = useSelector((state) => state.auth);
 
   const containerVariants = {
     hidden: { opacity: 0 },

@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../context/useAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser, clearError } from '../../store/authSlice';
 import { motion as Motion } from 'framer-motion';
 import Input from '../common/Input';
 import Button from '../common/Button';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-  const { register } = useAuth();
+  const dispatch = useDispatch();
+  const { loading, error: apiError, isAuthenticated } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     username: '',
@@ -16,8 +18,18 @@ const RegisterForm = () => {
     confirmPassword: ''
   });
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [apiError, setApiError] = useState('');
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearError());
+    };
+  }, [dispatch]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +37,7 @@ const RegisterForm = () => {
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
-    setApiError('');
+    dispatch(clearError());
   };
 
   const validate = () => {
@@ -69,17 +81,11 @@ const RegisterForm = () => {
       return;
     }
 
-    setLoading(true);
-    setApiError('');
-
-    const result = await register(formData.username, formData.email, formData.password);
-
-    if (result.success) {
-      navigate('/dashboard');
-    } else {
-      setApiError(result.error);
-      setLoading(false);
-    }
+    dispatch(registerUser({ 
+      username: formData.username, 
+      email: formData.email, 
+      password: formData.password 
+    }));
   };
 
   return (
