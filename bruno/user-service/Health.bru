@@ -1,0 +1,20 @@
+meta {
+  name: Health
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8081/user/health
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NzExNDQzMzIsImV4cCI6MTc3MTE0NzkzMn0.MVHlgVTzVt23SHr5smIi7QWIm6pMU2hjTVtfKiydbBCnepf9UFmr-tVWV2wF4xe2vNntPuI-NKowJgblaL5bMA
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

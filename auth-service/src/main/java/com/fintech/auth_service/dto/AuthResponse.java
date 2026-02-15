@@ -5,12 +5,14 @@ public class AuthResponse {
     private String userId;
     private String username;
     private String role;
+    private Boolean isProfileComplete;
 
-    public AuthResponse(String token, String userId, String username, String role) {
+    public AuthResponse(String token, String userId, String username, String role,Boolean isProfileComplete) {
         this.token = token;
         this.userId = userId;
         this.username = username;
         this.role = role;
+        this.isProfileComplete = false;
     }
 
     // Getters and Setters
@@ -44,5 +46,13 @@ public class AuthResponse {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Boolean getIsProfileComplete() {
+        return isProfileComplete;
+    }
+
+    public void setIsProfileComplete(Boolean isProfileComplete) {
+        this.isProfileComplete = isProfileComplete;
     }
 }

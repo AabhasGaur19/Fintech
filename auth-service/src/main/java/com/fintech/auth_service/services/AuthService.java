@@ -61,7 +61,7 @@ public class AuthService {
         // Generate token
         String token = generateToken(user.getId().toString(), user.getRole());
 
-        return new AuthResponse(token, user.getId().toString(), user.getUsername(), user.getRole());
+        return new AuthResponse(token, user.getId().toString(), user.getUsername(), user.getRole(),false);
     }
 
     public AuthResponse login(LoginRequest request) {
