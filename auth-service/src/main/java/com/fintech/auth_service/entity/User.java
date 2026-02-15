@@ -21,7 +21,10 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String role = "USER"; // USER, ADMIN
+    private String role = "USER"; // USER or ADMIN
+
+    @Column(name = "auth_provider")
+    private String authProvider; // LOCAL or GOOGLE
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -79,6 +82,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getAuthProvider() {
+        return authProvider;
+    }
+
+    public void setAuthProvider(String authProvider) {
+        this.authProvider = authProvider;
     }
 
     public LocalDateTime getCreatedAt() {
