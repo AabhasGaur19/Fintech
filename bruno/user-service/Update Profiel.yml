@@ -1,0 +1,35 @@
+info:
+  name: Update Profiel
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://localhost:8081/user/profile
+  body:
+    type: json
+    data: |-
+      {
+        "userId": 8,
+        "email": "kuki1@example.com",
+        "firstName": "Kuki",
+        "lastName": null,
+        "profilePictureUrl": null,
+        "themePreference": "LIGHT",
+        "twoFactorEnabled": true,
+        "preferredLanguage": "ESP",
+        "timezone": "UTC",
+        "notificationEnabled": true,
+        "isProfileComplete": false,
+        "createdAt": "2026-02-23T19:27:44.207143",
+        "updatedAt": "2026-02-23T19:27:44.207143"
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4Iiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NzE4NTUwMjUsImV4cCI6MTc3MTg1ODYyNX0.-PeSsmFNbUQxnWI1yRAa3xzXAS4hYZweO_1PYFhIdeYEBp-UTK2qHSI7RmhU4Ejrg2-1FNvVwr6aJN5XbQx9HA
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
