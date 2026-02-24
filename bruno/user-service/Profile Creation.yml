@@ -11,7 +11,7 @@ http:
     data: |-
       {
         "userId": 8,
-        "email": "kuki@example.com"
+        "email": "kuki1@example.com"
       }
   auth:
     type: bearer

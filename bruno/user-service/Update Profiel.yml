@@ -13,7 +13,7 @@ http:
         "userId": 8,
         "email": "kuki1@example.com",
         "firstName": "Kuki",
-        "lastName": null,
+        "lastName": "Gaur",
         "profilePictureUrl": null,
         "themePreference": "LIGHT",
         "twoFactorEnabled": true,

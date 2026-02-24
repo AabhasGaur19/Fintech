@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import DashboardPage from '../pages/DashboardPage';
+import ProfilePage from '../pages/ProfilePage';
 import ProtectedRoute from './ProtectedRoute';
 
 const AppRoutes = () => {
@@ -15,6 +16,14 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         }
       />
