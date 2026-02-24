@@ -4,7 +4,8 @@ import com.fintech.auth_service.dto.AuthResponse;
 import com.fintech.auth_service.dto.LoginRequest;
 import com.fintech.auth_service.dto.RegisterRequest;
 import com.fintech.auth_service.dto.ValidateTokenResponse;
-import com.fintech.auth_service.services.AuthService;
+import com.fintech.auth_service.services.AuthServiceImpl;
+import com.fintech.auth_service.util.JwtUtil;
 
 import io.jsonwebtoken.Claims;
 
@@ -20,7 +21,10 @@ import java.util.Map;
 public class AuthController {
 
     @Autowired
-    private AuthService authService;
+    private AuthServiceImpl authService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @GetMapping("/health")
     public String test() {
@@ -63,7 +67,7 @@ public class AuthController {
             String token = authHeader.substring(7);
             
             // Validate token
-            Claims claims = authService.validateToken(token);
+            Claims claims = jwtUtil.validateToken(token);
             String userId = claims.getSubject();
             String role = claims.get("role", String.class);
 
